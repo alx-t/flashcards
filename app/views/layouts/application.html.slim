@@ -1,0 +1,17 @@
+html
+  head
+    title Флешкарточкер
+    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+
+  body
+ 		.container-fluid
+			nav.navbar.navbar-default
+				.container-fluid
+					.navbar-brand
+						| Флешкарточкер
+					ul.nav.navbar-nav.navbar-right
+						li = link_to 'Все карточки', '#'
+						li = link_to 'Добавить карточку', '#'
+ 			= yield
