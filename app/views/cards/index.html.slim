@@ -1,0 +1,17 @@
+h3 Все карточки
+
+table.table.table-striped
+  thead
+    tr
+      th Слово
+      th Перевод
+      th Последний показ
+
+  tbody
+    - @cards.each do |card|
+      tr
+        td = card.original_text
+        td = card.translated_text
+        td = Date.strptime(card.review_date).strftime("%d/%m/%Y")
+
+= link_to 'Назад', root_path
