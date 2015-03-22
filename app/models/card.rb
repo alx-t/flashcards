@@ -6,7 +6,7 @@ class Card < ActiveRecord::Base
   protected
 
     def set_review_date
-      self.review_date = Time.now + 3.days if self.review_date.blank?
+      self.review_date = Time.now + 3.days
     end
 
     def translated_text_not_equal_original
