@@ -1,0 +1,18 @@
+h3 Просмотр карточки
+
+table.table
+  tbody
+    tr 
+      td Слово
+      td = @card.original_text
+    tr
+      td Перевод
+      td= @card.translated_text
+    tr
+      td Пересмотр
+      td = Date.strptime(@card.review_date).strftime("%d/%m/%Y")
+
+=<> link_to 'Изменить', edit_card_path(@card)
+=<> link_to 'Удалить', @card, data: { confirm: 'Уверены?' }, method: :delete
+hr
+= link_to 'Назад', cards_path
