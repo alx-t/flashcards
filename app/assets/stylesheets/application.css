@@ -14,3 +14,9 @@
  *= require_self
  *= require bootstrap
  */
+
+.simple_form label {
+  width: 150px;
+  text-align: right;
+  margin: 10px;
+}

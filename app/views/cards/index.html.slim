@@ -1,11 +1,15 @@
 h3 Все карточки
 
+= link_to 'Новая карточка', new_card_path
+hr
+
 table.table.table-striped
   thead
     tr
       th Слово
       th Перевод
-      th Последний показ
+      th Пересмотр
+      th
 
   tbody
     - @cards.each do |card|
@@ -13,5 +17,11 @@ table.table.table-striped
         td = card.original_text
         td = card.translated_text
         td = Date.strptime(card.review_date).strftime("%d/%m/%Y")
+        td 
+          = link_to 'Просмотр', card
+          br
+          = link_to 'Изменить', edit_card_path(card)
+          br
+          = link_to 'Удалить', card, data: { confirm: 'Уверены?' }, method: :delete
 
 = link_to 'Назад', root_path
