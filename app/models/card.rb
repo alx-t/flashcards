@@ -3,6 +3,18 @@ class Card < ActiveRecord::Base
   validate :translated_text_not_equal_original
   before_validation :set_review_date, on: :create
 
+  scope :active, -> { where("review_date <= ?", Time.now).order("RANDOM()") }
+
+  def correct_answer_update?(answer)
+    if original_text == answer
+      set_review_date
+      save
+      return true
+    else
+      return false
+    end
+  end
+
   protected
 
     def set_review_date

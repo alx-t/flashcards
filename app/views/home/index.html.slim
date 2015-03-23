@@ -1,2 +1,9 @@
 p style="font-size: 18px;"
   | Первый в мире удобный менеджер флеш-карточек. Именно так.
+
+hr
+= render 'shared/notice'
+- if @card
+  = render 'review/form', card: @card
+- else 
+  | Карточек на сегодня нет!

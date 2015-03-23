@@ -15,6 +15,7 @@ class CardsController < ApplicationController
   def create
     @card = Card.new(card_params)
     if @card.save
+      flash[:success] = "Карточка добавлена!"
       redirect_to cards_path
     else
       render :new
@@ -23,6 +24,7 @@ class CardsController < ApplicationController
 
   def update
     if @card.update(card_params)
+      flash[:success] = "Карточка обновлена!"
       redirect_to cards_path
     else
       render :edit
@@ -31,6 +33,7 @@ class CardsController < ApplicationController
 
   def destroy
     @card.destroy
+    flash[:success] = "Карточка удалена!"
     redirect_to cards_path
   end
 
