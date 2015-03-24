@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  put 'review/check'
+
   root 'home#index'
 
   resources :cards

@@ -8,13 +8,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-=begin
-Card.create(original_text: 'Car', translated_text: 'Автомобиль', review_date: Time.now)
-Card.create(original_text: 'Cat', translated_text: 'Кот', review_date: Time.now)
-Card.create(original_text: 'Dog', translated_text: 'Собака', review_date: Time.now)
-Card.create(original_text: 'City', translated_text: 'Город', review_date: Time.now)
-=end
-
 require 'open-uri'
 require 'nokogiri'
 
