@@ -6,7 +6,7 @@ class Card < ActiveRecord::Base
   scope :active, -> { where("review_date <= ?", Time.now).order("RANDOM()") }
 
   def correct_answer_update?(answer)
-    if original_text == answer
+    if original_text.mb_chars.downcase.to_s == answer.mb_chars.downcase.to_s
       set_review_date
       save
       return true
