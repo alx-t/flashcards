@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  post 'review/check'
+  put 'review/check'
 
   root 'home#index'
 

@@ -1,6 +1,6 @@
 = card.translated_text
 
-= form_tag review_check_path do
+= form_tag review_check_path, method: :put do
   = text_field_tag "original_text", nil, placeholder: 'Перевод'
   = hidden_field_tag "card_id", card.id
 
