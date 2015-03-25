@@ -3,10 +3,10 @@ rvm:
   - 2.1.5
 env:
   - DB=postgresql
-script:
-  - RAILS_ENV=test bundle exec rake db:migrate --trace
-  - bundle exec rake db:test:prepare
-  - bundle exec rake
 before_script:
   - cp config/database.yml.travis config/database.yml
   - psql -c 'create database travis_ci_test;' -U postgres
+script:
+  - bin/rake db:migrate RAILS_ENV=test --trace
+  - bin/rake db:test:prepare
+  - bin/rake
