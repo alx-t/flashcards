@@ -5,11 +5,6 @@ describe Card do
   let(:card) { FactoryGirl.create(:card) }
 
   subject { card }
-
-  it { should respond_to(:original_text) }
-  it { should respond_to(:translated_text) }
-  it { should respond_to(:review_date) }
-
   it { should be_valid }
 
   context "validating" do
@@ -30,7 +25,7 @@ describe Card do
 
     context "translated text not equal original" do
       before { card.translated_text = "TeSt" }
-      it { should_not be_valid}
+      it { should_not be_valid }
     end
   end
 
@@ -49,7 +44,7 @@ describe Card do
     end
 
     context "russian text" do
-      before(:each) { card.original_text = "тест"}
+      before(:each) { card.original_text = "тест" }
 
       it "uppercase text right answer" do
         expect(card.check_translation("ТесТ")).to be true
@@ -61,7 +56,7 @@ describe Card do
     end
 
     context "checking review date" do
-      before(:each) { card.review_date = Time.now - 3.days}
+      before(:each) { card.review_date = Time.now - 3.days }
 
       it "changing if right answer" do
         card.check_translation("test")
