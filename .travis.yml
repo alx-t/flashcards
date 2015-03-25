@@ -7,6 +7,6 @@ before_script:
   - cp config/database.yml.travis config/database.yml
   - psql -c 'create database travis_ci_test;' -U postgres
 script:
-  - bin/rake db:migrate RAILS_ENV=test --trace
-  - bin/rake db:test:prepare
-  - bin/rake
+  - rake db:migrate RAILS_ENV=test --trace
+  - rake db:test:prepare
+  - rake
