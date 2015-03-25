@@ -44,6 +44,7 @@ group :development, :test do
   gem 'rspec-rails', '3.1.0'
   gem 'factory_girl_rails', '4.5.0'
   gem 'rake', '10.2.2'
+  gem 'capybara'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
