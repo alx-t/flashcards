@@ -2,12 +2,18 @@ require 'rails_helper'
 
 describe Card do
 
-  let(:card) { FactoryGirl.create(:card) }
+  let(:user) { FactoryGirl.create(:user) }
+  let(:card) { FactoryGirl.create(:card, user: user) }
 
   subject { card }
   it { should be_valid }
 
   context "validating" do
+    context "user in not present" do
+      before { card.user = nil }
+      it { should_not be_valid }
+    end
+
     context "when original_text is not present" do
       before { card.original_text = "" }
       it { should_not be_valid }

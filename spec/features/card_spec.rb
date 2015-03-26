@@ -2,6 +2,8 @@ require "rails_helper"
 
 describe "Card" do
 
+  let(:user) { FactoryGirl.create(:user) }
+
   context "check on home page" do
 
     it "without card" do
@@ -12,7 +14,7 @@ describe "Card" do
     context "with card" do
 
       before(:each) do
-        FactoryGirl.create(:card)
+        FactoryGirl.create(:card, user: user)
         visit root_path
       end
 
