@@ -1,0 +1,20 @@
+h3 Пользователи
+
+table.table.table-striped
+  thead
+    tr
+      th Пользователь
+      th
+
+  tbody
+    - @users.each do |user|
+      tr
+        td = user.email
+        td 
+          = link_to 'Просмотр', user
+          br
+          = link_to 'Изменить', edit_user_path(user)
+          br
+          = link_to 'Удалить', user, data: { confirm: 'Уверены?' }, method: :delete
+
+= link_to 'Назад', root_path

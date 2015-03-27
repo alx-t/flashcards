@@ -8,12 +8,16 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+=begin
 require 'open-uri'
 require 'nokogiri'
 
 url = "http://www.languagedaily.com/learn-german/vocabulary/common-german-words"
 
 doc = Nokogiri::HTML(open(url))
+#doc = Nokogiri::HTML(open(url, 
+      :proxy_http_basic_authentication => 
+      ["http://proxy:3128", "teal", "pjjgfhr0"]))
 items = doc.xpath("//td")
 index = 5
 step = 4
@@ -23,3 +27,4 @@ while (index < items.length) do
   Card.create(original_text: original_text, translated_text: translated_text)
   index += step
 end
+=end

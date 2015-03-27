@@ -12,6 +12,16 @@ html
           .navbar-brand
             = link_to "Флешкарточкер", root_path
           ul.nav.navbar-nav.navbar-right
-            li = link_to 'Все карточки', cards_path
-            li = link_to 'Добавить карточку', new_card_path
+            - if current_user
+              li = link_to "Профиль", edit_user_path(current_user.id)
+              li = link_to "Выйти", :logout 
+              li = link_to 'Все карточки', cards_path
+              li = link_to 'Добавить карточку', new_card_path
+            - else
+              li = link_to "Регистрация", new_user_path
+              li = link_to "Войти", :login
+
+      = render 'shared/notice'
       = yield
+
+      /= debug(params) if Rails.env.development?

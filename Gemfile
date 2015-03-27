@@ -52,3 +52,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'slim-rails', '3.0.1'
 gem 'simple_form', '3.1.0'
+gem 'sorcery', '0.9.0'

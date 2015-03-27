@@ -2,8 +2,7 @@ require 'rails_helper'
 
 describe Card do
 
-  let(:user) { FactoryGirl.create(:user) }
-  let(:card) { FactoryGirl.create(:card, user: user) }
+  let(:card) { FactoryGirl.create(:card) }
 
   subject { card }
   it { should be_valid }
