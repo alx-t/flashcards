@@ -6,7 +6,8 @@ describe "Users" do
     before(:each) { visit root_path }
 
     it "when user is not logged in" do
-      expect(page).to have_content "Зарегистрируйтесь или войдите для начала работы с карточками"
+      expect(page).to have_content "Зарегистрируйтесь или войдите для \
+        начала работы с карточками"
     end
 
     it "successful registration" do
@@ -19,7 +20,7 @@ describe "Users" do
       expect(page).to have_content "Ошибка в данных!"
     end
 
-    it "successful login" do      
+    it "successful login" do
       FactoryGirl.create(:user)
       login("user@example.com", "password")
       expect(page).to have_content "Добро пожаловать!"
@@ -35,7 +36,8 @@ describe "Users" do
       FactoryGirl.create(:user)
       login("user@example.com", "password")
       click_link "Выйти"
-      expect(page).to have_content "Зарегистрируйтесь или войдите для начала работы с карточками"
+      expect(page).to have_content "Зарегистрируйтесь или войдите для \
+        начала работы с карточками"
     end
   end
 end
