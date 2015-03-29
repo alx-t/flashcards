@@ -4,15 +4,15 @@ table.table
   tbody
     tr 
       td Email
-      td = @user.email
+      td = current_user.email
     tr
       td Создан
-      td = @user.created_at.strftime("%d/%m/%Y")
+      td = current_user.created_at.strftime("%d/%m/%Y")
     tr
       td Изменен
-      td = @user.updated_at.strftime("%d/%m/%Y")
+      td = current_user.updated_at.strftime("%d/%m/%Y")
 
-=<> link_to 'Изменить', edit_user_path(@user)
-=<> link_to 'Удалить', @user, data: { confirm: 'Уверены?' }, method: :delete
+=<> link_to 'Изменить', edit_user_path(current_user)
+=<> link_to 'Удалить', current_user, data: { confirm: 'Уверены?' }, method: :delete
 hr
 = link_to 'Назад', root_path

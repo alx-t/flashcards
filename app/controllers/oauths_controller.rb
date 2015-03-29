@@ -1,25 +1,25 @@
 class OauthsController < ApplicationController
-  skip_before_filter :require_login
+  skip_before_action :require_login
 
   def oauth
-    login_at(params[:provider])
+    login_at(auth_params[:provider])
   end
 
   def callback
     provider = auth_params[:provider]
     if @user = login_from(provider)
-      flash[:notice] = "Logged in from #{provider.titleize}!"
+      flash[:success] = "Вход через #{provider.titleize}!"
       redirect_to root_path
     else
       begin
         @user = create_from(provider)
-        # NOTE: this is the place to add '@user.activate!' if you are using user_activation submodule
-
-        reset_session # protect from session fixation attack
+        reset_session
         auto_login(@user)
-        redirect_to root_path, :notice => "Logged in from #{provider.titleize}!"
+        flash[:success] = "Вход через #{provider.titleize}!"
+        redirect_to root_path
       rescue
-        redirect_to root_path, :alert => "Failed to login from #{provider.titleize}!"
+        flash[:danger] = "Ошибка входа через #{provider.titleize}!"
+        redirect_to root_path
       end
     end
   end
