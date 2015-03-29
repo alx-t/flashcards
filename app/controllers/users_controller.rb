@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
     @users = User.all
@@ -12,7 +11,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user.update(user_params)
+    if current_user.update(user_params)
       flash[:success] = "Пользователь обновлен!"
       redirect_to root_path
     else
@@ -22,16 +21,12 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user.destroy
+    current_user.destroy
     flash[:success] = "Пользователь удален!"
     redirect_to root_path
   end
 
   private
-
-    def set_user
-      @user = current_user
-    end
 
     def user_params
       params.require(:user).permit(:email, :password, :password_confirmation)

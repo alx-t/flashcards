@@ -1,5 +1,10 @@
 h3 Изменить пользователя
 
-= render 'form', user: @user
+= simple_form_for current_user do |f|
+  
+  = f.input :email, label: "Введите email"
+  = f.input :password, label: "Введите пароль"
+  = f.input :password_confirmation, label: "Подтверждение пароля"
+  .btn = f.submit "Сохранить"
 
 = link_to 'Назад', root_path
