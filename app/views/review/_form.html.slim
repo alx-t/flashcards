@@ -1,3 +1,4 @@
+= image_tag(card.image_url) if card.image?
 = card.translated_text
 
 = form_tag review_check_path, method: :put do
