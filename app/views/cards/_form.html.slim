@@ -1,5 +1,7 @@
 = simple_form_for card do |f|
   
+  = image_tag(card.image_url)
+  = f.input :image, label: 'Выбрать картинку', as: :file
   = f.input :original_text, label: 'Введите слово'
   = f.input :translated_text, label: 'Введите перевод'
   .btn = f.submit 'Сохранить'

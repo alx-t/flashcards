@@ -17,5 +17,8 @@
 /tmp
 
 # 
+/public/**
+!/public/*.*
 /config/database.yml
 /config/secrets.yml
+.ruby-version
