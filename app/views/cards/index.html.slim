@@ -12,7 +12,7 @@ table.table.table-striped
   tbody
     - @cards.each do |card|
       tr
-        td = image_tag(card.image_url) if card.image?
+        td = image_tag(card.image_url)
         td = card.original_text
         td = card.translated_text
         td = Date.strptime(card.review_date).strftime("%d/%m/%Y")
