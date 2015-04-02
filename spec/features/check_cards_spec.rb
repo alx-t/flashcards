@@ -3,19 +3,22 @@ require "rails_helper"
 describe "Cards" do
 
   context "check" do
-
     before(:each) do
-      FactoryGirl.create(:card)
-      login("user@example.com", "password")
-    end
+      FactoryGirl.create(:user)
 
-    it "new card" do
-      visit root_path
-      expect(page).to have_content "Добавить карточку"
+      login("user@example.com", "password")
+      click_link "Добавить колоду"
+      fill_in :pack_title, with: "Первая"
+      check :pack_current
+      click_button "Сохранить"
+
       click_link "Добавить карточку"
       fill_in :card_original_text, with: "test"
       fill_in :card_translated_text, with: "тест"
       click_button "Сохранить"
+    end
+
+    it "new card" do
       expect(page).to have_content "Карточка добавлена!"
     end
 

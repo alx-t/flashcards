@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   root "home#index"
 
   resources :cards
+  resources :packs
   resources :users, except: [:new, :create]
   resources :registration, only: [:new, :create]
   resources :user_sessions

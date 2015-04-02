@@ -3,7 +3,6 @@ require "rails_helper"
 describe "Answers" do
 
   context "check" do
-
     it "without card" do
       FactoryGirl.create(:user)
       login("user@example.com", "password")
@@ -11,7 +10,6 @@ describe "Answers" do
     end
 
     context "with card" do
-
       before(:each) do
         FactoryGirl.create(:card)
         login("user@example.com", "password")

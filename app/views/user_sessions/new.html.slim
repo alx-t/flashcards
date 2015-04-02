@@ -8,9 +8,6 @@ h3 Войти
     = label_tag :email, "Введите пароль"
     = password_field_tag :password, nil, placeholder: "Пароль"
     br
-
     .btn = button_tag "Войти"
 
 = link_to "Войти через Facebook", auth_at_provider_path(provider: :facebook)
-
-

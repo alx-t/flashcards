@@ -2,18 +2,15 @@ class CardsController < ApplicationController
   before_action :set_card, only: [:show, :edit, :update, :destroy]
 
   def index
-    @cards = current_user.cards
+    @cards = current_user.current_pack.cards
   end
 
   def new
-    @card = current_user.cards.new
-  end
-
-  def edit
+    @card = current_user.current_pack.cards.new
   end
 
   def create
-    @card = current_user.cards.build(card_params)
+    @card = current_user.current_pack.cards.build(card_params)
     if @card.save
       flash[:success] = "Карточка добавлена!"
       redirect_to cards_path
@@ -38,9 +35,8 @@ class CardsController < ApplicationController
   end
 
   private
-
     def set_card
-      @card = current_user.cards.find(params[:id])
+      @card = current_user.current_pack.cards.find(params[:id])
     end
 
     def card_params

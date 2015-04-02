@@ -10,7 +10,6 @@ class ReviewController < ApplicationController
   end
 
   private
-
     def card_params
       params.permit(:card_id, :original_text)
     end

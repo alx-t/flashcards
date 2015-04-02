@@ -1,0 +1,10 @@
+tr
+  td = image_tag("yes.jpg") if pack.current
+  td = pack.title
+  td
+    = link_to 'Просмотр', pack
+    br
+    = link_to 'Изменить', edit_pack_path(pack)
+    br
+    = link_to 'Удалить', pack, data: { confirm: 'Уверены?' }, method: :delete
+    

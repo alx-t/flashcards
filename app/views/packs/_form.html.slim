@@ -1,0 +1,4 @@
+= simple_form_for pack do |f|
+  = f.input :title, label: "Название колоды"
+  = f.input :current, label: "Сделать текущей", as: :boolean
+  .btn = f.submit "Сохранить"
