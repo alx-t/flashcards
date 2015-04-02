@@ -35,6 +35,7 @@ class CardsController < ApplicationController
   end
 
   private
+  
     def set_card
       @card = current_user.current_pack.cards.find(params[:id])
     end

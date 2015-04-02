@@ -19,6 +19,7 @@ class Pack < ActiveRecord::Base
   end
 
   private
+  
     def set_current
       user.update_attribute(:current_pack, self)
     end
