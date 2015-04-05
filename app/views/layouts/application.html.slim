@@ -11,10 +11,9 @@ html
         .container-fluid
           .navbar-brand
             = link_to "Флешкарточкер", root_path
-            - if current_user
-              - if current_user.current_pack
-                span style="font-size: 15px;"
-                  |   Текущая колода - "#{current_user.current_pack.title}"
+            - if current_user.try(:current_pack)
+              span style="font-size: 15px;"
+                |   Текущая колода - "#{current_user.current_pack.title}"
           ul.nav.navbar-nav.navbar-right
             - if current_user
               li = link_to "Профиль", edit_user_path(current_user.id)

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Card do
+describe "Card" do
 
   let(:card) { FactoryGirl.create(:card) }
 
@@ -8,11 +8,6 @@ describe Card do
   it { should be_valid }
 
   context "validating" do
-    context "user in not present" do
-      before { card.user = nil }
-      it { should_not be_valid }
-    end
-
     context "when original_text is not present" do
       before { card.original_text = "" }
       it { should_not be_valid }

@@ -4,27 +4,26 @@ class Pack < ActiveRecord::Base
   attr_accessor :current
   validates :title, :user, presence: true
 
-  def current=(new_value)    
+  def current=(value)
     return unless user
-    case new_value
-    when "1"
+    if value
       set_current
-    when "0"
+    else
       reset_current
     end
   end
 
-  def current
+  def current?
     user.current_pack == self
   end
 
   private
-  
+
     def set_current
-      user.update_attribute(:current_pack, self)
+      user.update_attributes(current_pack: self)
     end
 
     def reset_current
-      user.update_attribute(:current_pack, nil)
+      user.update_attributes(current_pack: nil)
     end
 end

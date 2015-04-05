@@ -1,4 +1,6 @@
 = simple_form_for pack do |f|
   = f.input :title, label: "Название колоды"
-  = f.input :current, label: "Сделать текущей", as: :boolean
+  = f.input :current, label: "Сделать текущей", as: :boolean,
+    checked_value: true, unchecked_value: false,
+    input_html: { checked: pack.current? }
   .btn = f.submit "Сохранить"

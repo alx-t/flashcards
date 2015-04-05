@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :users, except: [:new, :create]
   resources :registration, only: [:new, :create]
   resources :user_sessions
+  resources :change_password, only: [:edit, :update]
 
   post "/users", to: "registration#create"
 

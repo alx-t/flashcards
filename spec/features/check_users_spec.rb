@@ -16,7 +16,7 @@ describe "Users" do
     end
 
     it "failed registration" do
-      registration("user_example.com", "password")
+      registration("user@example.com", "")
       expect(page).to have_content "Ошибка в данных!"
     end
 

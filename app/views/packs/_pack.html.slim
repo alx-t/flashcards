@@ -1,5 +1,5 @@
 tr
-  td = image_tag("yes.jpg") if pack.current
+  td = image_tag("yes.jpg") if pack.current?
   td = pack.title
   td
     = link_to 'Просмотр', pack
