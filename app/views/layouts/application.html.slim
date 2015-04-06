@@ -1,7 +1,8 @@
 html
   head
     title Флешкарточкер
-    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    = stylesheet_link_tag "application", media: "all",
+                          "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
 
@@ -17,7 +18,7 @@ html
           ul.nav.navbar-nav.navbar-right
             - if current_user
               li = link_to "Профиль", edit_user_path(current_user.id)
-              li = link_to "Выйти", :logout 
+              li = link_to "Выйти", :logout
               li = link_to 'Все колоды', packs_path
               li = link_to 'Добавить колоду', new_pack_path
               - if current_user.current_pack

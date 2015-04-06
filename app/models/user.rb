@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   end
 
   has_many :packs, dependent: :destroy
+  has_many :cards, through: :packs
   belongs_to :current_pack, class_name: "Pack"
   has_many :authentications, dependent: :destroy
   accepts_nested_attributes_for :authentications
@@ -17,17 +18,7 @@ class User < ActiveRecord::Base
     if current_pack
       current_pack.cards.active.first
     else
-      get_active_cards
+      cards.active.first
     end
   end
-
-  private
-
-    def get_active_card
-      active_cards = []
-      packs.each do |pack|
-        active_cards << pack.cards.active
-      end
-      active_cards.sample
-    end
 end

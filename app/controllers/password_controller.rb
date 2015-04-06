@@ -1,10 +1,10 @@
-class ChangePasswordController < ApplicationController
+class PasswordController < ApplicationController
 
   def edit
   end
 
   def update
-    if current_user.update(user_params)
+    if current_user.update(passwords_params)
       flash[:success] = "Пароль изменен!"
       redirect_to root_path
     else
@@ -15,7 +15,7 @@ class ChangePasswordController < ApplicationController
 
   private
 
-    def user_params
-      params.require(:user).permit(:password, :password_confirmation)
+    def passwords_params
+      params.require(:passwords).permit(:password, :password_confirmation)
     end
 end

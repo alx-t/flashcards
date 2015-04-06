@@ -11,7 +11,7 @@ class PacksController < ApplicationController
 
   def create
     @pack = current_user.packs.build(title: pack_params[:title],
-      current: pack_params[:current] == "true")
+                                     current: pack_params[:current] == "true")
     if @pack.save
       if pack_params["current"] == "true"
         @pack.user.update_attributes(current_pack: @pack)
@@ -25,7 +25,7 @@ class PacksController < ApplicationController
 
   def update
     if @pack.update(title: pack_params[:title],
-        current: pack_params[:current] == "true")
+                    current: pack_params[:current] == "true")
       flash[:success] = "Колода обновлена!"
       redirect_to packs_path
     else
@@ -36,6 +36,14 @@ class PacksController < ApplicationController
   def destroy
     @pack.destroy
     flash[:success] = "Колода удалена!"
+    redirect_to packs_path
+  end
+
+  def toggle_current_pack
+    new_current_pack = current_user.packs.find(params[:pack])
+    new_current_pack = (current_user.current_pack_id == new_current_pack.id) \
+      ? nil : new_current_pack
+    current_user.update_attributes(current_pack: new_current_pack)
     redirect_to packs_path
   end
 

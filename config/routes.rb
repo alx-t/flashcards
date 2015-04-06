@@ -9,9 +9,10 @@ Rails.application.routes.draw do
   resources :users, except: [:new, :create]
   resources :registration, only: [:new, :create]
   resources :user_sessions
-  resources :change_password, only: [:edit, :update]
+  resources :password, only: [:edit, :update]
 
   post "/users", to: "registration#create"
+  post "toggle_current_pack", to: "packs#toggle_current_pack"
 
   get "login" => "user_sessions#new", as: :login
   get "logout" => "user_sessions#destroy", as: :logout

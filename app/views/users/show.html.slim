@@ -13,6 +13,7 @@ table.table
       td = current_user.updated_at.strftime("%d/%m/%Y")
 
 =<> link_to 'Изменить', edit_user_path(current_user)
-=<> link_to 'Удалить', current_user, data: { confirm: 'Уверены?' }, method: :delete
+=<> link_to 'Удалить', current_user, data: { confirm: 'Уверены?' },
+      method: :delete
 hr
 = link_to 'Назад', root_path
