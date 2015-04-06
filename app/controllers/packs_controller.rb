@@ -41,8 +41,9 @@ class PacksController < ApplicationController
 
   def toggle_current_pack
     new_current_pack = current_user.packs.find(params[:pack])
-    new_current_pack = (current_user.current_pack_id == new_current_pack.id) \
-      ? nil : new_current_pack
+    if current_user.current_pack_id == new_current_pack.id
+      new_current_pack = nil
+    end
     current_user.update_attributes(current_pack: new_current_pack)
     redirect_to packs_path
   end
