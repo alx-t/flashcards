@@ -31,4 +31,4 @@ describe "Packs" do
       expect(page).to have_content "Колода удалена!"
     end
   end
-end 
+end

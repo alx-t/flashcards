@@ -15,7 +15,7 @@ class PasswordController < ApplicationController
 
   private
 
-    def passwords_params
-      params.require(:passwords).permit(:password, :password_confirmation)
-    end
+  def passwords_params
+    params.require(:passwords).permit(:password, :password_confirmation)
+  end
 end

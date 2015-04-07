@@ -39,22 +39,24 @@ class PacksController < ApplicationController
     redirect_to packs_path
   end
 
-  def toggle_current_pack
+  def set_current
     new_current_pack = current_user.packs.find(params[:pack])
-    if current_user.current_pack_id == new_current_pack.id
-      new_current_pack = nil
-    end
     current_user.update_attributes(current_pack: new_current_pack)
+    redirect_to packs_path
+  end
+
+  def reset_current
+    current_user.update_attributes(current_pack: nil)
     redirect_to packs_path
   end
 
   private
 
-    def set_pack
-      @pack = current_user.packs.find(params[:id])
-    end
+  def set_pack
+    @pack = current_user.packs.find(params[:id])
+  end
 
-    def pack_params
-      params.require(:pack).permit(:title, :current)
-    end
+  def pack_params
+    params.require(:pack).permit(:title, :current)
+  end
 end

@@ -11,8 +11,9 @@ Rails.application.routes.draw do
   resources :user_sessions
   resources :password, only: [:edit, :update]
 
-  post "/users", to: "registration#create"
-  post "toggle_current_pack", to: "packs#toggle_current_pack"
+  post "users", to: "registration#create"
+  patch "set_current", to: "packs#set_current"
+  patch "reset_current", to: "packs#reset_current"
 
   get "login" => "user_sessions#new", as: :login
   get "logout" => "user_sessions#destroy", as: :logout

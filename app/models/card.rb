@@ -22,13 +22,13 @@ class Card < ActiveRecord::Base
 
   private
 
-    def set_review_date
-      self.review_date = Time.now + 3.days
-    end
+  def set_review_date
+    self.review_date = Time.now + 3.days
+  end
 
-    def translated_text_not_equal_original
-      if original_text.downcase == translated_text.downcase
-        errors[:translated_text] << "Must not be equal original text"
-      end
+  def translated_text_not_equal_original
+    if original_text.downcase == translated_text.downcase
+      errors[:translated_text] << "Must not be equal original text"
     end
+  end
 end

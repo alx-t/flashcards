@@ -36,11 +36,11 @@ class CardsController < ApplicationController
 
   private
 
-    def set_card
-      @card = current_user.current_pack.cards.find(params[:id])
-    end
+  def set_card
+    @card = current_user.current_pack.cards.find(params[:id])
+  end
 
-    def card_params
-      params.require(:card).permit(:original_text, :translated_text, :image)
-    end
+  def card_params
+    params.require(:card).permit(:original_text, :translated_text, :image)
+  end
 end

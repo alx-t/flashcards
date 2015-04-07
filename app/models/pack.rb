@@ -19,11 +19,11 @@ class Pack < ActiveRecord::Base
 
   private
 
-    def set_current
-      user.update_attributes(current_pack: self)
-    end
+  def set_current
+    user.update_attributes(current_pack: self)
+  end
 
-    def reset_current
-      user.update_attributes(current_pack: nil)
-    end
+  def reset_current
+    user.update_attributes(current_pack: nil)
+  end
 end
