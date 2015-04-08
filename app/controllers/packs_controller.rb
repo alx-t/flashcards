@@ -10,12 +10,8 @@ class PacksController < ApplicationController
   end
 
   def create
-    @pack = current_user.packs.build(title: pack_params[:title],
-                                     current: pack_params[:current] == "true")
+    @pack = current_user.packs.build(pack_params)
     if @pack.save
-      if pack_params["current"] == "true"
-        @pack.user.update_attributes(current_pack: @pack)
-      end
       flash[:success] = "Колода создана!"
       redirect_to packs_path
     else
@@ -24,8 +20,7 @@ class PacksController < ApplicationController
   end
 
   def update
-    if @pack.update(title: pack_params[:title],
-                    current: pack_params[:current] == "true")
+    if @pack.update(pack_params)
       flash[:success] = "Колода обновлена!"
       redirect_to packs_path
     else
@@ -39,17 +34,6 @@ class PacksController < ApplicationController
     redirect_to packs_path
   end
 
-  def set_current
-    new_current_pack = current_user.packs.find(params[:pack])
-    current_user.update_attributes(current_pack: new_current_pack)
-    redirect_to packs_path
-  end
-
-  def reset_current
-    current_user.update_attributes(current_pack: nil)
-    redirect_to packs_path
-  end
-
   private
 
   def set_pack
@@ -57,6 +41,6 @@ class PacksController < ApplicationController
   end
 
   def pack_params
-    params.require(:pack).permit(:title, :current)
+    params.require(:pack).permit(:title, :current_pack)
   end
 end

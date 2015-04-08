@@ -9,8 +9,8 @@ describe "Cards" do
       login("user@example.com", "password")
       click_link "Добавить колоду"
       fill_in :pack_title, with: "Первая"
-      check :pack_current
       click_button "Сохранить"
+      click_link "Сделать текущей"
 
       click_link "Добавить карточку"
       fill_in :card_original_text, with: "test"

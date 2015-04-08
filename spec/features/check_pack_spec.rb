@@ -12,9 +12,14 @@ describe "Packs" do
       visit root_path
       click_link "Добавить колоду"
       fill_in :pack_title, with: "Первая"
-      check :pack_current
       click_button "Сохранить"
       expect(page).to have_content "Колода создана!"
+    end
+
+    it "set current pack" do
+      visit packs_path
+      click_link "Сделать текущей"
+      expect(page).to have_content "Отмена текущей"
     end
 
     it "update pack" do
