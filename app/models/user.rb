@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
   private
 
   def current_pack_belongs_to_user
-    unless self.current_pack.nil? || self.packs.include?(self.current_pack)
+    unless current_pack.nil? || packs.include?(current_pack)
       errors[:pack_not_belongs_to_user] << "Current pack must belongs to user"
     end
   end

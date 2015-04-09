@@ -21,8 +21,6 @@ class UsersController < ApplicationController
   end
 
   def set_current_pack
-    #current_user.update_attributes(current_pack: \
-    #  current_user.packs.find(params[:current_pack_id]))
     current_user.update_attributes(current_pack_id: params[:current_pack_id])
     redirect_to packs_path
   end
