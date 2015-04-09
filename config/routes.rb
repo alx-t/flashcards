@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   post "users", to: "registration#create"
   patch "set_current", to: "users#set_current_pack"
   patch "reset_current", to: "users#reset_current_pack"
+  get "landing", to: "home#landing"
 
   get "login" => "user_sessions#new", as: :login
   get "logout" => "user_sessions#destroy", as: :logout

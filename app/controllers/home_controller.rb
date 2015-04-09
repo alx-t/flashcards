@@ -2,6 +2,13 @@ class HomeController < ApplicationController
   skip_before_action :require_login
 
   def index
-    @card = current_user.card_for_review if current_user
+    if current_user
+      @card = current_user.card_for_review if current_user
+    else
+      redirect_to landing_path
+    end
+  end
+
+  def landing
   end
 end
