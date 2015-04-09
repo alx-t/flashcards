@@ -3,9 +3,9 @@ tr
   td = pack.title
   td
     - if pack.current?
-      = link_to 'Отмена текущей', reset_current_path, method: :patch
+      = link_to 'Отмена текущей', reset_current_pack_path, method: :patch
     -else
-      = link_to 'Сделать текущей', set_current_path(current_pack_id: pack), method: :patch
+      = link_to 'Сделать текущей', set_current_pack_path(current_pack_id: pack), method: :patch
     br
     = link_to 'Просмотр', pack
     br

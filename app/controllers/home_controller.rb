@@ -3,7 +3,7 @@ class HomeController < ApplicationController
 
   def index
     if current_user
-      @card = current_user.card_for_review if current_user
+      @card = current_user.card_for_review
     else
       redirect_to landing_path
     end
