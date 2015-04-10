@@ -27,6 +27,14 @@ describe "Card" do
       before { card.translated_text = "TeSt" }
       it { should_not be_valid }
     end
+
+    context "translated text not equal original in russian" do
+      before do
+        card.original_text = "Тест"
+        card.translated_text = "тЕСт"
+      end
+      it { should_not be_valid }
+    end
   end
 
   context "check answer" do

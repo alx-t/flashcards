@@ -27,5 +27,21 @@ describe "Answers" do
         expect(page).to have_content "Правильно!"
       end
     end
+
+    context "current pack" do
+      let(:user) { FactoryGirl.create(:user) }
+      let(:pack) { FactoryGirl.create(:pack, title: "pack", user: user) }
+      let(:current_pack) { FactoryGirl.create(:pack, title: "current pack", user: user) }
+
+      it "card" do
+        FactoryGirl.create(:card, pack: pack, original_text: "test")
+        FactoryGirl.create(:card, pack: current_pack, original_text: "current")
+        user.update_attributes(current_pack: current_pack)
+        login("user@example.com", "password")
+        fill_in "original_text", with: "current"
+        click_button "Проверить!"
+        expect(page).to have_content "Правильно!"
+      end
+    end
   end
 end

@@ -22,6 +22,13 @@ describe "Packs" do
       expect(page).to have_content "Отмена текущей"
     end
 
+    it "reset current pack" do
+      visit packs_path
+      click_link "Сделать текущей"
+      click_link "Отмена текущей"
+      expect(page).to have_content "Сделать текущей"
+    end
+
     it "update pack" do
       visit packs_path
       click_link "Изменить"

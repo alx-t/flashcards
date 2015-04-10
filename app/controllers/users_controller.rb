@@ -26,7 +26,7 @@ class UsersController < ApplicationController
   end
 
   def reset_current_pack
-    current_user.update_attributes(current_pack: nil)
+    current_user.update_attributes(current_pack_id: nil)
     redirect_to packs_path
   end
 
