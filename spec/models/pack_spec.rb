@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe "Pack" do
 
-  let(:pack) { FactoryGirl.create(:pack) }
+  let(:pack) { create(:pack) }
   subject { pack }
 
   context "validating" do

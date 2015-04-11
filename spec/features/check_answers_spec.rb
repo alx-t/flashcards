@@ -4,14 +4,14 @@ describe "Answers" do
 
   context "check" do
     it "without card" do
-      FactoryGirl.create(:user)
+      create(:user)
       login("user@example.com", "password")
       expect(page).to have_content "Карточек на сегодня нет"
     end
 
     context "with card" do
       before(:each) do
-        FactoryGirl.create(:card)
+        create(:card)
         login("user@example.com", "password")
       end
 
@@ -29,13 +29,13 @@ describe "Answers" do
     end
 
     context "current pack" do
-      let(:user) { FactoryGirl.create(:user) }
-      let(:pack) { FactoryGirl.create(:pack, title: "pack", user: user) }
-      let(:current_pack) { FactoryGirl.create(:pack, title: "current pack", user: user) }
+      let(:user) { create(:user) }
+      let(:pack) { create(:pack, title: "pack", user: user) }
+      let(:current_pack) { create(:pack, title: "current pack", user: user) }
 
       it "card" do
-        FactoryGirl.create(:card, pack: pack, original_text: "test")
-        FactoryGirl.create(:card, pack: current_pack, original_text: "current")
+        create(:card, pack: pack, original_text: "test")
+        create(:card, pack: current_pack, original_text: "current")
         user.update_attributes(current_pack: current_pack)
         login("user@example.com", "password")
         fill_in "original_text", with: "current"

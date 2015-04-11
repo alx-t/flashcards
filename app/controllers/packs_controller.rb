@@ -41,6 +41,6 @@ class PacksController < ApplicationController
   end
 
   def pack_params
-    params.require(:pack).permit(:title, :current_pack)
+    params.require(:pack).permit(:title)
   end
 end

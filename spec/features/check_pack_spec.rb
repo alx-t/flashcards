@@ -4,7 +4,7 @@ describe "Packs" do
 
   context "check" do
     before(:each) do
-      FactoryGirl.create(:pack)
+      create(:pack)
       login("user@example.com", "password")
     end
 

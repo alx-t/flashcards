@@ -4,7 +4,7 @@ describe "Cards" do
 
   context "check" do
     before(:each) do
-      FactoryGirl.create(:user)
+      create(:user)
 
       login("user@example.com", "password")
       click_link "Добавить колоду"

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe "Card" do
 
-  let(:card) { FactoryGirl.create(:card) }
+  let(:card) { create(:card) }
 
   subject { card }
   it { should be_valid }
