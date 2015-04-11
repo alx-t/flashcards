@@ -1,18 +1,13 @@
 require 'rails_helper'
 
-describe Card do
+describe "Card" do
 
-  let(:card) { FactoryGirl.create(:card) }
+  let(:card) { create(:card) }
 
   subject { card }
   it { should be_valid }
 
   context "validating" do
-    context "user in not present" do
-      before { card.user = nil }
-      it { should_not be_valid }
-    end
-
     context "when original_text is not present" do
       before { card.original_text = "" }
       it { should_not be_valid }
@@ -30,6 +25,14 @@ describe Card do
 
     context "translated text not equal original" do
       before { card.translated_text = "TeSt" }
+      it { should_not be_valid }
+    end
+
+    context "translated text not equal original in russian" do
+      before do
+        card.original_text = "Тест"
+        card.translated_text = "тЕСт"
+      end
       it { should_not be_valid }
     end
   end

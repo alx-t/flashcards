@@ -1,0 +1,16 @@
+h3 Просмотр колоды
+
+table.table
+  tbody
+    - if @pack.current?
+      tr 
+        td = image_tag("yes.jpg") 
+    tr 
+      td = @pack.title
+    tr
+      td 
+
+=<> link_to 'Изменить', edit_pack_path(@pack)
+=<> link_to 'Удалить', @pack, data: { confirm: 'Уверены?' }, method: :delete
+hr
+= link_to 'Назад', packs_path

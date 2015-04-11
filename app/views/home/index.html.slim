@@ -1,11 +1,8 @@
-p style="font-size: 18px;"
+p.landing
   | Первый в мире удобный менеджер флеш-карточек. Именно так.
 
 hr
-- if current_user
-  - if @card
-    = render 'review/form', card: @card
-  - else 
-    | Карточек на сегодня нет!
+- if @card
+  = render 'review/form', card: @card
 - else
-  | Зарегистрируйтесь или войдите для начала работы с карточками
+  | Карточек на сегодня нет!

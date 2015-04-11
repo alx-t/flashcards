@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150330174604) do
+ActiveRecord::Schema.define(version: 20150406190133) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,9 +32,20 @@ ActiveRecord::Schema.define(version: 20150330174604) do
     t.datetime "updated_at",      null: false
     t.integer  "user_id"
     t.string   "image"
+    t.integer  "pack_id"
   end
 
+  add_index "cards", ["pack_id"], name: "index_cards_on_pack_id", using: :btree
   add_index "cards", ["user_id"], name: "index_cards_on_user_id", using: :btree
+
+  create_table "packs", force: :cascade do |t|
+    t.string   "title"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "packs", ["user_id"], name: "index_packs_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email"
@@ -42,9 +53,14 @@ ActiveRecord::Schema.define(version: 20150330174604) do
     t.datetime "updated_at",       null: false
     t.string   "crypted_password"
     t.string   "salt"
+    t.integer  "current_pack_id"
   end
 
+  add_index "users", ["current_pack_id"], name: "index_users_on_current_pack_id", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
 
+  add_foreign_key "cards", "packs"
   add_foreign_key "cards", "users"
+  add_foreign_key "packs", "users"
+  add_foreign_key "users", "packs", column: "current_pack_id"
 end

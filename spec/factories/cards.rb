@@ -2,10 +2,10 @@ FactoryGirl.define do
   factory :card do
     original_text   "test"
     translated_text "тест"
-    user
+    pack
 
     after(:create) do |card|
-      card.update_attributes(review_date: Date.today - 3.days)
+      card.update_attributes(review_date: Date.today - 4.days)
     end
   end
 end

@@ -4,12 +4,6 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
-  def show
-  end
-
-  def edit
-  end
-
   def update
     if current_user.update(user_params)
       flash[:success] = "Пользователь обновлен!"
@@ -26,9 +20,19 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
+  def set_current_pack
+    current_user.update_attributes(current_pack_id: params[:current_pack_id])
+    redirect_to packs_path
+  end
+
+  def reset_current_pack
+    current_user.update_attributes(current_pack_id: nil)
+    redirect_to packs_path
+  end
+
   private
 
-    def user_params
-      params.require(:user).permit(:email, :password, :password_confirmation)
-    end
+  def user_params
+    params.require(:user).permit(:email, :password, :password_confirmation)
+  end
 end

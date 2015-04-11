@@ -3,7 +3,7 @@ h3 Все карточки
 table.table.table-striped
   thead
     tr
-      th 
+      th
       th Слово
       th Перевод
       th Пересмотр
@@ -16,11 +16,12 @@ table.table.table-striped
         td = card.original_text
         td = card.translated_text
         td = Date.strptime(card.review_date).strftime("%d/%m/%Y")
-        td 
+        td
           = link_to 'Просмотр', card
           br
           = link_to 'Изменить', edit_card_path(card)
           br
-          = link_to 'Удалить', card, data: { confirm: 'Уверены?' }, method: :delete
+          = link_to 'Удалить', card, data: { confirm: 'Уверены?' },
+                                     method: :delete
 
 = link_to 'Назад', root_path
