@@ -2,6 +2,8 @@ source 'http://rubygems.org'
 
 ruby '2.1.5'
 gem 'rails', '4.2.0'
+#gem 'puma', '2.11.2'
+gem 'thin'
 
 gem 'pg', '0.18.1'
 
