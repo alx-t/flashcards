@@ -1,13 +1,23 @@
 language: ruby
 rvm:
-  - 2.1.5
+- 2.1.5
 env:
-  - DB=postgresql
+- DB=postgresql
 before_script:
-  - cp config/database.yml.travis config/database.yml
-  - psql -c 'create database travis_ci_test;' -U postgres
-  - cp config/secrets.yml.travis config/secrets.yml
+- cp config/database.yml.travis config/database.yml
+- psql -c 'create database travis_ci_test;' -U postgres
+- cp config/secrets.yml.travis config/secrets.yml
 script:
-  - bundle exec rake db:migrate RAILS_ENV=test --trace
-  - bundle exec rake db:test:prepare
-  - bundle exec rake
+- bundle exec rake db:migrate RAILS_ENV=test --trace
+- bundle exec rake db:test:prepare
+- bundle exec rake
+deploy:
+  provider: heroku
+  api_key:
+    secure: tkXAAx4m1URJGS6oQSSl0we9K4ajwqD4EWEeFv5B1+Yhp5Fj6AK/UYep2ZY8pGdTobZHXPndWPjupZeR4C+gOnzpxiiW7Kr16VthdhDjyRPsiQUkwA+6W7ohvqD6yf6XN5aOgej5hZuNgYXwMTzqWyOzNpqOcvq9AAB1jANEOgI=
+  app: tranquil-cove-3600
+  on:
+    repo: alx-t/flashcards
+    branch: twelfth-task
+  run:
+    - "rake db:migrate"
