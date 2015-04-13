@@ -5,9 +5,8 @@ class Card < ActiveRecord::Base
   validates :pack, presence: true
   validate :translated_text_not_equal_original
   validates :attempts, numericality: { only_integer: true },
-            inclusion: { in: 0...3 }
-  validates :repetition_number, numericality: { only_integer: true },
-            inclusion: { in: 0...5 }
+            inclusion: { in: 0..3 }
+  validates :repetition_number, numericality: { only_integer: true }
 
   before_validation :set_review_date, on: :create
 
