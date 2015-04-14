@@ -40,18 +40,18 @@ describe "Card" do
   context "check answer" do
 
     it "uppercase text right answer" do
-      expect(card.check_translation("TeSt")).to be true
+      expect(card.check_translation("TeSt")[:typos_count]).to eq(0)
     end
 
     context "russian text" do
       before(:each) { card.original_text = "тест" }
 
       it "uppercase text right answer" do
-        expect(card.check_translation("ТесТ")).to be true
+        expect(card.check_translation("ТесТ")[:typos_count]).to eq(0)
       end
 
       it "wrong answer" do
-        expect(card.check_translation("Дом")).to be false
+        expect(card.check_translation("Дом")[:typos_count]).to be > 1
       end
     end
 

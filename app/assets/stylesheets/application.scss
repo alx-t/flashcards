@@ -12,8 +12,9 @@
  *
  *= require_tree .
  *= require_self
- *= require bootstrap
  */
+@import "bootstrap";
+@import "bootstrap-sprockets";
 
 .simple_form label {
   width: 150px;

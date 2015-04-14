@@ -10,6 +10,9 @@ script:
 - bundle exec rake db:migrate RAILS_ENV=test --trace
 - bundle exec rake db:test:prepare
 - bundle exec rake
+addons:
+  code_climate:
+    repo_token: fb9c60c10e567734dc869103e8899ca3acc1cf8fc359ba7d2f46cbbcaf2b799f
 deploy:
   provider: heroku
   api_key:
