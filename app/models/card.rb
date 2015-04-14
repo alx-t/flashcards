@@ -16,7 +16,7 @@ class Card < ActiveRecord::Base
   def check_translation(answer)
     result = DamerauLevenshtein.distance(original_text.mb_chars.downcase.to_s, answer.mb_chars.downcase.to_s)
     CheckAnswer.new(self, result <= 1).call
-    result
+    { success: result <= 1, typos_count: result }
   end
 
   private

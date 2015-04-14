@@ -1,12 +1,13 @@
 class ReviewController < ApplicationController
   def check
     card = current_user.cards.find(card_params[:card_id])
-    case card.check_translation(card_params[:original_text])
-    when 0
+    result = card.check_translation(card_params[:original_text])
+    case [result[:success], result[:typos_count]]
+    when [true, 0]
       flash[:success] = "Правильно! \
                          Слово: #{card.original_text}, \
                          Перевод: #{card.translated_text}"
-    when 1
+    when [true, 1]
       flash[:success] = "Правильно! \
                          Слово: #{card.original_text}, \
                          Перевод: #{card.translated_text}, \
