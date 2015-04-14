@@ -14,10 +14,9 @@ class Card < ActiveRecord::Base
   mount_uploader :image, ImageUploader
 
   def check_translation(answer)
-    CheckAnswer.new(
-      self,
-      original_text.mb_chars.downcase.to_s == answer.mb_chars.downcase.to_s
-    ).call
+    result = DamerauLevenshtein.distance(original_text.mb_chars.downcase.to_s, answer.mb_chars.downcase.to_s)
+    CheckAnswer.new(self, result <= 1).call
+    result
   end
 
   private
