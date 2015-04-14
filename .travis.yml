@@ -17,6 +17,5 @@ deploy:
   app: tranquil-cove-3600
   on:
     repo: alx-t/flashcards
-    branch: twelfth-task
   run:
     - "rake db:migrate"
