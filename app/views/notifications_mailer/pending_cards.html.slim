@@ -1,0 +1,18 @@
+h3 Привет #{@user.email}!
+
+p Сегодня #{Time.now.strftime('%d/%m/%Y')} у тебя есть карточки к просмотру:
+
+table.table.table-striped
+  thead
+    tr
+      th
+      th Слово
+      th Пересмотр
+  tbody
+    - @user.cards_for_review.each do |card|
+      tr
+        td = image_tag attachments["#{card.image_url(:thumb)}"].url
+        td = card.translated_text
+        td = Date.strptime(card.review_date).strftime("%d/%m/%Y")
+
+p = link_to "Перейти к просмотру", root_url

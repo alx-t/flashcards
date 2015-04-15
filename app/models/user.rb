@@ -15,11 +15,11 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6 }, allow_blank: true
   validate :current_pack_belongs_to_user
 
-  def card_for_review
+  def cards_for_review
     if current_pack
-      current_pack.cards.active.first
+      current_pack.cards.active
     else
-      cards.active.first
+      cards.active
     end
   end
 
