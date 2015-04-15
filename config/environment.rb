@@ -13,5 +13,5 @@ ActionMailer::Base.smtp_settings = {
   password: Rails.application.secrets.email_user_password,
   authentication: :plain,
   enable_starttls_auto: true,
-  openssl_verify_mode: 'none'
+  openssl_verify_mode: "none"
 }
