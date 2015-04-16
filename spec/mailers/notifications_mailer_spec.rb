@@ -5,9 +5,9 @@ describe "Mailer" do
   let!(:user) { create(:user) }
   let!(:current_pack) { create(:pack, title: "current pack", user: user) }
   let!(:card) { create(:card,
-                     pack: current_pack,
-                     original_text: "current",
-                     review_date: Time.now - 3.days) }
+                        pack: current_pack,
+                        original_text: "current",
+                        review_date: Time.now - 3.days) }
   let!(:mailer) { NotificationsMailer.pending_cards(user) }
 
   context "send pending card" do
