@@ -19,6 +19,7 @@ gem 'simple_form', '3.1.0'
 gem 'sorcery', '0.9.0'
 gem 'carrierwave', '0.10.0'
 gem 'mini_magick', '4.2.0'
+gem 'fog', '1.29.0'
 gem 'damerau-levenshtein'
 gem 'whenever', require: false
 

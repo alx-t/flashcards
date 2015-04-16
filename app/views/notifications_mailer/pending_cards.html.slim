@@ -11,7 +11,8 @@ table.table.table-striped
   tbody
     - @user.cards_for_review.each do |card|
       tr
-        td = image_tag attachments["#{card.image_url(:thumb)}"].url
+        - if attachments["#{card.image_url(:thumb)}"]
+          td = image_tag attachments["#{card.image_url(:thumb)}"].url
         td = card.translated_text
         td = Date.strptime(card.review_date).strftime("%d/%m/%Y")
 

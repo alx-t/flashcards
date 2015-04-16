@@ -10,7 +10,8 @@ class Card < ActiveRecord::Base
 
   before_validation :set_review_date, on: :create
 
-  scope :active, -> { where("review_date <= ?", Time.now).order("RANDOM()") }
+  scope :active, -> { where("review_date <= ?", Time.now) }
+  scope :random, -> { order("RANDOM()") }
   mount_uploader :image, ImageUploader
 
   def check_translation(answer)

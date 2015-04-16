@@ -11,8 +11,10 @@ class NotificationsMailer < ApplicationMailer
 
   def set_attachments(user)
     user.cards_for_review.each do |card|
-      attachments.inline["#{card.image_url(:thumb)}"] =
-        File.read("#{Rails.root}/public#{card.image_url(:thumb)}")
+      file_name = "#{Rails.root}/public#{card.image_url(:thumb)}"
+      if File.exists?(file_name)
+        attachments.inline["#{card.image_url(:thumb)}"] = File.read(file_name)
+      end
     end
   end
 end
