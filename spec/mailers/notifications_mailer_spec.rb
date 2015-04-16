@@ -25,7 +25,7 @@ describe "Mailer" do
     end
 
     it "renders the card in body" do
-        expect(mailer.body.encoded).to include(card.translated_text)
+      expect(mailer.body.encoded).to include(card.translated_text)
     end
   end
 end

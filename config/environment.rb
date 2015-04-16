@@ -5,7 +5,7 @@ require File.expand_path('../application', __FILE__)
 Rails.application.initialize!
 
 ActionMailer::Base.delivery_method = :smtp
-ActionMailer::Base.default_url_options[:host] = "localhost:3000"
+ActionMailer::Base.default_url_options[:host] = Rails.application.secrets.email_host
 ActionMailer::Base.smtp_settings = {
   address: Rails.application.secrets.email_address,
   port: 587,

@@ -1,3 +1,5 @@
+require 'open-uri'
+
 class NotificationsMailer < ApplicationMailer
 
   def pending_cards(user)
@@ -11,10 +13,8 @@ class NotificationsMailer < ApplicationMailer
 
   def set_attachments(user)
     user.cards_for_review.each do |card|
-      file_name = "#{Rails.root}/public#{card.image_url(:thumb)}"
-      if File.exists?(file_name)
-        attachments.inline["#{card.image_url(:thumb)}"] = File.read(file_name)
-      end
+      next if card.image_url == "default.jpg"
+      attachments.inline["#{card.image_url(:thumb)}"] = open("#{card.image_url(:thumb)}").read
     end
   end
 end
