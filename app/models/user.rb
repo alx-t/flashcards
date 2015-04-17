@@ -15,11 +15,18 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6 }, allow_blank: true
   validate :current_pack_belongs_to_user
 
-  def card_for_review
+  def self.send_pending_card_notification
+    users = User.joins(:cards).merge(Card.active).distinct
+    users.find_each do |user|
+      NotificationsMailer.pending_cards(user).deliver_now
+    end
+  end
+
+  def cards_for_review
     if current_pack
-      current_pack.cards.active.first
+      current_pack.cards.active
     else
-      cards.active.first
+      cards.active
     end
   end
 
