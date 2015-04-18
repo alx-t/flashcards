@@ -13,7 +13,7 @@ describe "Packs" do
       click_link "Добавить колоду"
       fill_in :pack_title, with: "Первая"
       click_button I18n.t(:submit)
-      expect(page).to have_content I18n.t('.fl_pack_add')
+      expect(page).to have_content I18n.t(".fl_pack_add")
     end
 
     it "set current pack" do

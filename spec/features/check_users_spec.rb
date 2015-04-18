@@ -38,8 +38,8 @@ describe "Users" do
     it "logout" do
       create(:user)
       login("user@example.com", "password")
-      click_link I18n.t('.layouts.application.logout')
-      expect(page).to have_content I18n.t('.home.landing.sign_in')
+      click_link I18n.t(".layouts.application.logout")
+      expect(page).to have_content I18n.t(".home.landing.sign_in")
     end
   end
 end

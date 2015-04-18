@@ -31,9 +31,9 @@ en:
   fl_user_edit: "User is changed!"
   fl_welcome: "Welcome!"
   fl_logout: "You logged out"
-  fl_succ_trans: "Right! Original: %{orig}, Translation: %{trans}"
-  fl_succ_trans_typos: "Right! Original: %{orig}, Translation: %{trans}, Typo: %{typo}"
-  fl_err_trans: "Wrong!"
+  fl_right_translation: "Right! Original: %{orig}, Translation: %{trans}"
+  fl_right_translation_typos: "Right! Original: %{orig}, Translation: %{trans}, Typo: %{typo}"
+  fl_wrong_translation: "Wrong!"
 
   layouts:
     application:

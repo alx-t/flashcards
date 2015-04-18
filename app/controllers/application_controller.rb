@@ -8,21 +8,18 @@ class ApplicationController < ActionController::Base
   private
 
   def set_locale
-    if current_user
-      if current_user.locale
-        locale = current_user.locale
-        logger.info "cu loc #{locale}"
+    locale =
+      if current_user
+        if current_user.locale
+          current_user.locale
+        else
+          http_accept_language.compatible_language_from(I18n.available_locales)
+        end
+      elsif session[:locale]
+        session[:locale]
       else
-        locale = http_accept_language.compatible_language_from(I18n.available_locales)
-        logger.info "ht loc #{locale}"
+        http_accept_language.compatible_language_from(I18n.available_locales)
       end
-    elsif session[:locale]
-      locale = session[:locale]
-      logger.info "ss loc #{locale}"
-    else
-      locale = http_accept_language.compatible_language_from(I18n.available_locales)
-      logger.info "ht 2 loc #{locale}"
-    end
 
     if locale && I18n.available_locales.include?(locale.to_s.to_sym)
       session[:locale] = I18n.locale = locale.to_sym
