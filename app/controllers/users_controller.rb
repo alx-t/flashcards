@@ -6,17 +6,17 @@ class UsersController < ApplicationController
 
   def update
     if current_user.update(user_params)
-      flash[:success] = "Пользователь обновлен!"
+      flash[:success] = t(:fl_user_edit)
       redirect_to root_path
     else
-      flash.now[:danger] = "Ошибка в данных!"
+      flash.now[:danger] = t(:fl_data_err)
       render :edit
     end
   end
 
   def destroy
     current_user.destroy
-    flash[:success] = "Пользователь удален!"
+    flash[:success] = t(:fl_user_del)
     redirect_to root_path
   end
 
@@ -33,6 +33,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation)
+    params.require(:user).permit(:email, :locale, :password, :password_confirmation)
   end
 end

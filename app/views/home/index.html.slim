@@ -1,8 +1,7 @@
-p.landing
-  | Первый в мире удобный менеджер флеш-карточек. Именно так.
+p.landing = t :welcome
 
 hr
 - if @card
   = render 'review/form', card: @card
 - else
-  | Карточек на сегодня нет!
+  | #{t('.no_cards')}

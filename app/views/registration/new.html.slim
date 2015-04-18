@@ -1,9 +1,9 @@
-h3 Новый пользователь
+h3 = t('.new_user')
 
 = simple_form_for @user do |f|
-  = f.input :email, label: "Введите email"
-  = f.input :password, label: "Введите пароль"
-  = f.input :password_confirmation, label: "Подтверждение пароля"
-  .btn = f.submit "Сохранить"
+  = f.input :email, label: t('email')
+  = f.input :password, label: t('passwrd')
+  = f.input :password_confirmation, label: t('.confirm')
+  .btn = f.submit t(:submit)
 
-= link_to 'Назад', root_path
+= link_to t(:back), root_path

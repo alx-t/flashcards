@@ -1,19 +1,22 @@
-h3 Просмотр пользователя
+h3 = t('.view_user')
 
 table.table
   tbody
     tr
-      td Email
+      td = t(:email)
       td = current_user.email
     tr
-      td Создан
+      td = t('.locale')
+      td = current_user.locale
+    tr
+      td = t('.created')
       td = current_user.created_at.strftime("%d/%m/%Y")
     tr
-      td Изменен
+      td = t('.changed')
       td = current_user.updated_at.strftime("%d/%m/%Y")
 
-=<> link_to 'Изменить', edit_user_path(current_user)
-=<> link_to 'Удалить', current_user, data: { confirm: 'Уверены?' },
+=<> link_to t(:edit), edit_user_path(current_user)
+=<> link_to t(:delete), current_user, data: { confirm: t(:sure) },
       method: :delete
 hr
-= link_to 'Назад', root_path
+= link_to t(:back), root_path

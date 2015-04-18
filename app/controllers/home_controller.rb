@@ -11,4 +11,9 @@ class HomeController < ApplicationController
 
   def landing
   end
+
+  def change_locale
+    session[:locale] = params[:new_locale]
+    redirect_to landing_path
+  end
 end

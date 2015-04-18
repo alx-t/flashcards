@@ -1,0 +1,128 @@
+ru:
+  welcome: "Первый в мире удобный менеджер флеш-карточек. Именно так."
+  submit: "Сохранить"
+  view: "Просмотр"
+  edit: "Изменить"
+  delete: "Удалить"
+  sure: "Уверены?"
+  back: "Назад"
+  original: "Слово"
+  translation: "Перевод"
+  review_date: "Дата пересмотра"
+  email: "Email"
+  passwrd: "Пароль"
+  facebook: "Войти через Facebook"
+  check: "Проверить!"
+  ru: "Русский"
+  en: "English"
+
+  fl_card_add: "Карточка добавлена!"
+  fl_card_edit: "Карточка обновлена!"
+  fl_card_delete: "Карточка удалена!"
+  fl_oauth_login: "Вход через "
+  fl_oauth_err: "Ошибка входа через "
+  fl_pack_add: "Колода добавлена!"
+  fl_pack_edit: "Колода обновлена!"
+  fl_pack_delete: "Колода удалена!"
+  fl_passwd_ch: "Пароль изменен!"
+  fl_data_err: "Ошибка в данных!"
+  fl_user_reg: "Пользователь зарегистрирован!"
+  fl_user_del: "Пользователь удален!"
+  fl_user_edit: "Пользователь изменен!"
+  fl_welcome: "Добро пожаловать!"
+  fl_logout: "Вы вышли!"
+  fl_succ_trans: "Правильно! Слово: %{orig}, Перевод: %{trans}"
+  fl_succ_trans_typos: "Правильно! Слово: %{orig}, Перевод: %{trans}, Ошибка ввода: %{typos}"
+  fl_err_trans: "Не правильно!"
+
+  layouts:
+    application:
+      title: "Флешкарточкер"
+      home: "Флашкарточкер"
+      current_pack: "Текущая колода"
+      profile: "Профиль"
+      logout: "Выход"
+      packs: "Все колоды"
+      add_pack: "Добавить колоду"
+      cards: "Все карточки"
+      add_card: "Добавить карточку"
+      registration: "Регистрация"
+      login: "Войти"
+
+  home:
+    index:
+      no_cards: "Карточек на сегодня нет!"
+
+    landing:
+      sign_in: "Зарегистрируйтесь или войдите для начала работы с карточками"
+
+  cards:
+    form:
+      image: "Выберите картинку"
+      original: "Введите слово"
+      translation: "Введите перевод"
+
+    edit:
+      edit_card: "Изменить карточку"
+
+    index:
+      all_cards: "Все карты"
+
+    new:
+      new_card: "Новая карточка"
+
+    show:
+      view_card: "Просмотр карты"
+
+  packs:
+    form:
+      pack_title: "Название колоды"
+
+    pack:
+      set_current: "Сделать текущей"
+      reset_current: "Отмена текущей"
+
+    edit:
+      edit_pack: "Изменить колоду"
+
+    index:
+      all_packs: "Все колоды"
+      pack: "Колода"
+
+    new:
+      new_pack: "Новая колода"
+
+    show:
+      view_pack: "Просмотр колоды"
+
+  users:
+    edit:
+      edit_user: "Изменить пользователя"
+      edit_locale: "Изменить локаль"
+      change_password: "Изменить пароль"
+
+    index:
+      all_users: "Все пользователи"
+      user: "Пользователь"
+      locale: "Локаль"
+
+    show:
+      view_user: "Просмотр пользователя"
+      locale: "Локаль"
+      created: "Создан"
+      changed: "Изменен"
+
+  password:
+    edit:
+      change_password: "Изменить пароль для пользователя "
+      passwrd: "Новый пароль"
+      confirm: "Подтверждение"
+
+  registration:
+    new:
+      new_user: "Новый пользователь"
+      confirm: "Подтверждение"
+
+  user_sessions:
+    new:
+      sign_in: "Войти"
