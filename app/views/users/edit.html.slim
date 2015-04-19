@@ -2,7 +2,7 @@ h3 = t('.edit_user')
 
 = simple_form_for current_user do |f|
   = f.input :email, label: t('email')
-  = f.input :locale, label: t('.edit_locale'), collection: get_locales
+  = f.input :locale, label: t('.edit_locale'), collection: locales_as_human
   .btn = f.submit t(:submit)
 
 = link_to t('.change_password'), edit_password_path

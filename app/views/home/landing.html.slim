@@ -4,5 +4,5 @@ hr = t '.sign_in'
 
 hr
 = form_tag change_locale_path, method: :post do
-  = select_tag :new_locale, options_for_select(get_locales)
+  = select_tag :new_locale, options_for_select(locales_as_human)
   .btn = submit_tag t(:submit)

@@ -31,8 +31,8 @@ ru:
   fl_user_edit: "Пользователь изменен!"
   fl_welcome: "Добро пожаловать!"
   fl_logout: "Вы вышли!"
-  fl_right_translation: "Правильно! Слово: %{orig}, Перевод: %{trans}"
-  fl_right_translation_typos: "Правильно! Слово: %{orig}, Перевод: %{trans}, Ошибка ввода: %{typos}"
+  fl_right_translation: "Правильно! Слово: %{original}, Перевод: %{translation}"
+  fl_right_translation_typos: "Правильно! Слово: %{original}, Перевод: %{translation}, Ошибка ввода: %{typo}"
   fl_wrong_translation: "Не правильно!"
 
   layouts:
