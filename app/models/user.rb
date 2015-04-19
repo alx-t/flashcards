@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   validates :password, confirmation: true
   validates :password, presence: true, if: :new_record?
   validates :password, length: { minimum: 6 }, allow_blank: true
+  validates :locale, presence: true, allow_nil: true, inclusion: { in: %w(ru en) }
   validate :current_pack_belongs_to_user
 
   def self.send_pending_card_notification

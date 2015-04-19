@@ -1,21 +1,21 @@
-h3 Просмотр карточки
+h3 = t('.view_card')
 
 table.table
   tbody
-    tr 
-      td 
+    tr
+      td
       td = image_tag(@card.image_url)
-    tr 
-      td Слово
+    tr
+      td = t(:original)
       td = @card.original_text
     tr
-      td Перевод
+      td = t(:translation)
       td= @card.translated_text
     tr
-      td Пересмотр
+      td = t(:review_date)
       td = Date.strptime(@card.review_date).strftime("%d/%m/%Y")
 
-=<> link_to 'Изменить', edit_card_path(@card)
-=<> link_to 'Удалить', @card, data: { confirm: 'Уверены?' }, method: :delete
+=<> link_to t(:edit), edit_card_path(@card)
+=<> link_to t(:delete), @card, data: { confirm: t(:sure) }, method: :delete
 hr
-= link_to 'Назад', cards_path
+= link_to t(:back), cards_path

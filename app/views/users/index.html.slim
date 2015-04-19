@@ -1,21 +1,23 @@
-h3 Пользователи
+h3 = t('.all_users')
 
 table.table.table-striped
   thead
     tr
-      th Пользователь
+      th = t('.user')
+      th = t('.locale')
       th
 
   tbody
     - @users.each do |user|
       tr
         td = user.email
+        td = user.locale
         td
-          = link_to 'Просмотр', user
+          = link_to t(:view), user
           br
-          = link_to 'Изменить', edit_user_path(user)
+          = link_to t(:edit), edit_user_path(user)
           br
-          = link_to 'Удалить', user, data: { confirm: 'Уверены?' },
+          = link_to t(:delete), user, data: { confirm: t(:sure) },
               method: :delete
 
-= link_to 'Назад', root_path
+= link_to t(:back), root_path

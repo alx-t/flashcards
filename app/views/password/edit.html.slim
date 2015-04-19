@@ -1,9 +1,11 @@
-h3 Изменить пароль для пользователя #{current_user.email}
+h3
+  = t('.change_password')
+  = current_user.email
 
 = simple_form_for :passwords, url: password_path, method: :patch do |f|
-  = f.input :password, label: "Введите пароль", required: true
-  = f.input :password_confirmation, label: "Подтверждение пароля",
+  = f.input :password, label: t('.passwrd'), required: true
+  = f.input :password_confirmation, label: t('.confirm'),
             required: true
-  .btn = f.submit "Сохранить"
+  .btn = f.submit t(:submit)
 
-= link_to 'Назад', root_path
+= link_to t(:back), root_path

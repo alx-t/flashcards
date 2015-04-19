@@ -3,12 +3,12 @@ tr
   td = pack.title
   td
     - if pack.current?
-      = link_to 'Отмена текущей', reset_current_pack_path, method: :patch
+      = link_to t('.reset_current'), reset_current_pack_path, method: :patch
     -else
-      = link_to 'Сделать текущей', set_current_pack_path(current_pack_id: pack), method: :patch
+      = link_to t('.set_current'), set_current_pack_path(current_pack_id: pack), method: :patch
     br
-    = link_to 'Просмотр', pack
+    = link_to t(:view), pack
     br
-    = link_to 'Изменить', edit_pack_path(pack)
+    = link_to t(:edit), edit_pack_path(pack)
     br
-    = link_to 'Удалить', pack, data: { confirm: 'Уверены?' }, method: :delete
+    = link_to t(:delete), pack, data: { confirm: t(:sure) }, method: :delete

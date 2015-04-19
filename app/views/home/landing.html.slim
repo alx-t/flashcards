@@ -1,5 +1,8 @@
-p.landing
-  | Первый в мире удобный менеджер флеш-карточек. Именно так.
+p.landing = t :welcome
+
+hr = t '.sign_in'
 
 hr
-| Зарегистрируйтесь или войдите для начала работы с карточками
+= form_tag change_locale_path, method: :post do
+  = select_tag :new_locale, options_for_select(locales_as_human)
+  .btn = submit_tag t(:submit)

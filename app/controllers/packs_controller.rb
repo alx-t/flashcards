@@ -12,7 +12,7 @@ class PacksController < ApplicationController
   def create
     @pack = current_user.packs.build(pack_params)
     if @pack.save
-      flash[:success] = "Колода создана!"
+      flash[:success] = t(:fl_pack_add)
       redirect_to packs_path
     else
       render :new
@@ -21,7 +21,7 @@ class PacksController < ApplicationController
 
   def update
     if @pack.update(pack_params)
-      flash[:success] = "Колода обновлена!"
+      flash[:success] = t(:fl_pack_edit)
       redirect_to packs_path
     else
       render :new
@@ -30,7 +30,7 @@ class PacksController < ApplicationController
 
   def destroy
     @pack.destroy
-    flash[:success] = "Колода удалена!"
+    flash[:success] = t(:fl_pack_delete)
     redirect_to packs_path
   end
 

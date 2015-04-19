@@ -14,16 +14,16 @@ class ReviewController < ApplicationController
   def check_answer(result)
     case [result[:success], result[:typos_count]]
     when [true, 0]
-      flash[:success] = "Правильно! \
-                         Слово: #{@card.original_text}, \
-                         Перевод: #{@card.translated_text}"
+      flash[:success] = t :fl_right_translation,
+                          original: @card.original_text,
+                          translation: @card.translated_text
     when [true, 1]
-      flash[:success] = "Правильно! \
-                         Слово: #{@card.original_text}, \
-                         Перевод: #{@card.translated_text}, \
-                         Ошибка ввода: #{card_params[:original_text]}"
+      flash[:success] = t :fl_right_translation_typos,
+                          original: @card.original_text,
+                          translation: @card.translated_text,
+                          typo: card_params[:original_text]
     else
-      flash[:danger] = "Не правильно!"
+      flash[:danger] = t(:fl_wrong_translation)
     end
   end
 end

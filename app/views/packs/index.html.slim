@@ -1,12 +1,12 @@
-h3 Все колоды
+h3 = t('.all_packs')
 
 table.table.table-stiped
   thead
     tr
       th
-      th Колода
+      th = t('.pack')
       th
   tbody
     = render @packs
 
-= link_to 'Назад', root_path
+= link_to t(:back), root_path

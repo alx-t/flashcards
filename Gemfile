@@ -15,6 +15,7 @@ gem 'jbuilder', '~> 2.0'
 
 gem 'slim-rails', '3.0.1'
 gem 'bootstrap-sass', '~>3.3.4'
+
 gem 'simple_form', '3.1.0'
 gem 'sorcery', '0.9.0'
 gem 'carrierwave', '0.10.0'
@@ -22,6 +23,7 @@ gem 'mini_magick', '4.2.0'
 gem 'fog', '1.29.0'
 gem 'damerau-levenshtein'
 gem 'whenever', require: false
+gem 'http_accept_language'
 
 group :development, :test do
   gem 'byebug'

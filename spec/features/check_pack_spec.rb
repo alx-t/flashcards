@@ -12,8 +12,8 @@ describe "Packs" do
       visit root_path
       click_link "Добавить колоду"
       fill_in :pack_title, with: "Первая"
-      click_button "Сохранить"
-      expect(page).to have_content "Колода создана!"
+      click_button I18n.t(:submit)
+      expect(page).to have_content I18n.t(".fl_pack_add")
     end
 
     it "set current pack" do

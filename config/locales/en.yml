@@ -1,23 +1,128 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  welcome: "The best worlds flashcards manager. Just so"
+  submit: "Save"
+  view: "View"
+  edit: "Edit"
+  delete: "Delete"
+  sure: "Are you sure?"
+  back: "Back"
+  original: "Original text"
+  translation: "Translated text"
+  review_date: "Review date"
+  email: "Email"
+  passwrd: "Password"
+  facebook: "Sign in with Facebook"
+  check: "Check!"
+  ru: "Русский"
+  en: "English"
+
+  fl_card_add: "Card is added!"
+  fl_card_edit: "Card is changed!"
+  fl_card_delete: "Card is deleted!"
+  fl_oauth_login: "Signing in"
+  fl_oauth_err: "Error sign in"
+  fl_pack_add: "Pack is created!"
+  fl_pack_edit: "Pack is changed!"
+  fl_pack_delete: "Pack is deleted!"
+  fl_passwd_ch: "Password is changed!"
+  fl_data_err: "Data error!"
+  fl_user_reg: "User is registered!"
+  fl_user_del: "User is deleted!"
+  fl_user_edit: "User is changed!"
+  fl_welcome: "Welcome!"
+  fl_logout: "You logged out"
+  fl_right_translation: "Right! Original: %{original}, Translation: %{translation}"
+  fl_right_translation_typos: "Right! Original: %{original}, Translation: %{translation}, Typo: %{typo}"
+  fl_wrong_translation: "Wrong!"
+
+  layouts:
+    application:
+      title: "Flashcards"
+      home: "Flashcards"
+      current_pack: "Current pack"
+      profile: "Profile"
+      logout: "Logout"
+      packs: "All packs"
+      add_pack: "Add pack"
+      cards: "All cards"
+      add_card: "Add card"
+      registration: "Registration"
+      login: "Login"
+
+  home:
+    index:
+      no_cards: "No card's today!"
+
+    landing:
+      sign_in: "Sign up please or log in to start working with flashcards"
+
+  cards:
+    form:
+      image: "Select image"
+      original: "Original text"
+      translation: "Translated text"
+
+    edit:
+      edit_card: "Edit card"
+
+    index:
+      all_cards: "All cards"
+
+    new:
+      new_card: "New card"
+
+    show:
+      view_card: "View card"
+
+  packs:
+    form:
+      pack_title: "Pack title"
+
+    pack:
+      set_current: "Set current"
+      reset_current: "Reset current"
+
+    edit:
+      edit_pack: "Edit pack"
+
+    index:
+      all_packs: "All packs"
+      pack: "Pack"
+
+    new:
+      new_pack: "New pack"
+
+    show:
+      view_pack: "View pack"
+
+  users:
+    edit:
+      edit_user: "Edit user"
+      edit_locale: "Edit locale"
+      change_password: "Change password"
+
+    index:
+      all_users: "All users"
+      user: "User"
+      locale: "Locale"
+
+    show:
+      view_user: "View user"
+      locale: "Locale"
+      created: "Created"
+      changed: "Changed"
+
+  password:
+    edit:
+      change_password: "Change password for user "
+      passwrd: "New password"
+      confirm: "Confirmation"
+
+  registration:
+    new:
+      new_user: "New user"
+      confirm: "Confirmation"
+
+  user_sessions:
+    new:
+      sign_in: "Sign in"

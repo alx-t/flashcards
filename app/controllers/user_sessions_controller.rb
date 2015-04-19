@@ -7,15 +7,15 @@ class UserSessionsController < ApplicationController
 
   def create
     if @user = login(params[:email], params[:password])
-      redirect_back_or_to root_path, success: "Добро пожаловать!"
+      redirect_back_or_to root_path, success: t(:fl_welcome)
     else
-      flash.now[:danger] = "Неправильный логин или пароль!"
+      flash.now[:danger] = t(:fl_data_err)
       render :new
     end
   end
 
   def destroy
     logout
-    redirect_to root_path, success: "Вы вышли из системы"
+    redirect_to root_path, success: t(:fl_logout)
   end
 end

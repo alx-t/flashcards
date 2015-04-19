@@ -5,10 +5,10 @@ class PasswordController < ApplicationController
 
   def update
     if current_user.update(passwords_params)
-      flash[:success] = "Пароль изменен!"
+      flash[:success] = t(:fl_passwd_ch)
       redirect_to root_path
     else
-      flash[:danger] = "Ошибка в данных!"
+      flash[:danger] = t(:fl_data_err)
       render :edit
     end
   end

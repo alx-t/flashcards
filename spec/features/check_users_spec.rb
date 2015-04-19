@@ -3,7 +3,10 @@ require "rails_helper"
 describe "Users" do
 
   context "check" do
-    before(:each) { visit root_path }
+    before(:each) do
+      visit root_path
+      select "Русский", from: "new_locale"
+    end
 
     it "when user is not logged in" do
       expect(page).to have_content "Зарегистрируйтесь или войдите для \
@@ -23,21 +26,20 @@ describe "Users" do
     it "successful login" do
       create(:user)
       login("user@example.com", "password")
-      expect(page).to have_content "Добро пожаловать!"
+      expect(page).to have_content I18n.t(:welcome)
     end
 
     it "failed login" do
       create(:user)
       login("user_example.com", "password")
-      expect(page).to have_content "Неправильный логин или пароль!"
+      expect(page).to have_content I18n.t(:fl_data_err)
     end
 
     it "logout" do
       create(:user)
       login("user@example.com", "password")
-      click_link "Выйти"
-      expect(page).to have_content "Зарегистрируйтесь или войдите для \
-        начала работы с карточками"
+      click_link I18n.t(".layouts.application.logout")
+      expect(page).to have_content I18n.t(".home.landing.sign_in")
     end
   end
 end

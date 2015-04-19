@@ -1,12 +1,12 @@
-h3 Все карточки
+h3 = t('.all_cards')
 
 table.table.table-striped
   thead
     tr
       th
-      th Слово
-      th Перевод
-      th Пересмотр
+      th = t(:original)
+      th = t(:translation)
+      th = t(:review_date)
       th
 
   tbody
@@ -17,11 +17,11 @@ table.table.table-striped
         td = card.translated_text
         td = Date.strptime(card.review_date).strftime("%d/%m/%Y")
         td
-          = link_to 'Просмотр', card
+          = link_to t(:view), card
           br
-          = link_to 'Изменить', edit_card_path(card)
+          = link_to t(:edit), edit_card_path(card)
           br
-          = link_to 'Удалить', card, data: { confirm: 'Уверены?' },
+          = link_to t(:delete), card, data: { confirm: t(:sure) },
                                      method: :delete
 
-= link_to 'Назад', root_path
+= link_to t(:back), root_path

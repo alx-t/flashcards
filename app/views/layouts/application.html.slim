@@ -1,6 +1,6 @@
 html
   head
-    title Флешкарточкер
+    title = t '.title'
     = stylesheet_link_tag "application", media: "all",
                           "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
@@ -11,22 +11,22 @@ html
       nav.navbar.navbar-default
         .container-fluid
           .navbar-brand
-            = link_to "Флешкарточкер", root_path
+            = link_to t('.home'), root_path
             - if current_user.try(:current_pack)
               span style="font-size: 15px;"
-                |   Текущая колода - "#{current_user.current_pack.title}"
+                |   #{t('.current_pack')} - #{current_user.current_pack.title}
           ul.nav.navbar-nav.navbar-right
             - if current_user
-              li = link_to "Профиль", edit_user_path(current_user.id)
-              li = link_to "Выйти", :logout
-              li = link_to 'Все колоды', packs_path
-              li = link_to 'Добавить колоду', new_pack_path
+              li = link_to t('.profile'), edit_user_path(current_user.id)
+              li = link_to t('.logout'), :logout
+              li = link_to t('.packs'), packs_path
+              li = link_to t('.add_pack'), new_pack_path
               - if current_user.current_pack
-                li = link_to 'Все карточки', cards_path
-                li = link_to 'Добавить карточку', new_card_path
+                li = link_to t('.cards'), cards_path
+                li = link_to t('.add_card'), new_card_path
             - else
-              li = link_to "Регистрация", new_registration_path
-              li = link_to "Войти", :login
+              li = link_to t('.registration'), new_registration_path
+              li = link_to t('.login'), :login
 
       = render 'shared/notice'
       = yield
