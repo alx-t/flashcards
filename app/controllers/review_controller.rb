@@ -1,14 +1,15 @@
 class ReviewController < ApplicationController
   def check
     @card = current_user.cards.find(card_params[:card_id])
-    check_answer(@card.check_translation(card_params[:original_text]))
+    check_answer(@card.check_translation(card_params[:original_text],
+                                         card_params[:answer_time].to_i))
     redirect_to root_path
   end
 
   private
 
   def card_params
-    params.permit(:card_id, :original_text)
+    params.permit(:card_id, :original_text, :answer_time)
   end
 
   def check_answer(result)
