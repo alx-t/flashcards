@@ -6,23 +6,33 @@ class SuperMemo
     @answer_time = answer_time
     @quality = set_quality
     @efactor = @card.efactor
+    @interval = @card.interval
+    @attempts = @card.attempts
+    @review_date = @card.review_date
   end
 
   def call
     if @quality < 3
-      @card.attempts = 0
-      @card.interval = 0
-      @card.efactor = 2.5
+      @attempts = 0
+      @interval = 0
+      @efactor = 2.5
     else
-      @card.attempts += 1
-      @card.interval = get_interval(@card.attempts)
-      @card.efactor = @efactor
-      @card.review_date = Time.now + @card.interval.days
+      @attempts += 1
+      @interval = get_interval(@attempts)
+      @review_date = Time.now + @interval.days
     end
-    @card.save
+    save_card
   end
 
   private
+
+  def save_card
+    @card.attempts = @attempts
+    @card.interval = @interval
+    @card.efactor = @efactor
+    @card.review_date = @review_date
+    @card.save
+  end
 
   def set_quality
     if @check_result
@@ -51,7 +61,7 @@ class SuperMemo
     case attempts
     when 1 then 1
     when 2 then 6
-    else (@card.interval * get_efactor).round
+    else (@interval * get_efactor).round
     end
   end
 end
