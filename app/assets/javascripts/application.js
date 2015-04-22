@@ -17,8 +17,7 @@
 //= require bootstrap
 //= require bootstrap-sprockets
 
-var ready;
-ready = function() {
+var ready = function() {
   if ($("#answer_time").length) {
     setInterval(function() {
       $("#answer_time").val(parseInt($("#answer_time").val(), 10) + 1);
@@ -26,5 +25,4 @@ ready = function() {
   }
 };
 
-$(document).ready(ready);
-$(document).on('page:load', ready);
+$(document).on("page:load", ready);

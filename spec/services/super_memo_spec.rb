@@ -6,8 +6,7 @@ describe "SuperMemo" do
 
   context "1st right answer with answer time < 5c" do
     before(:each) do
-      sm = SuperMemo.new(card, true, 3)
-      sm.call
+      card.check_translation("test", 4)
     end
 
     it "card attempts should be 1" do
@@ -31,8 +30,7 @@ describe "SuperMemo" do
     before(:each) do
       card.attempts = 1
       card.interval = 1
-      sm = SuperMemo.new(card, true, 14)
-      sm.call
+      card.check_translation("test", 15)
     end
 
     it "card attempts should be 2" do
@@ -56,8 +54,7 @@ describe "SuperMemo" do
     before(:each) do
       card.attempts = 2
       card.interval = 6
-      sm = SuperMemo.new(card, true, 14)
-      sm.call
+      card.check_translation("test", 14)
     end
 
     it "card attempts should be 3" do
@@ -81,8 +78,7 @@ describe "SuperMemo" do
     before(:each) do
       card.attempts = 2
       card.interval = 6
-      sm = SuperMemo.new(card, false, 14)
-      sm.call
+      card.check_translation("wrong", 14)
     end
 
     it "card attempts should be 0" do

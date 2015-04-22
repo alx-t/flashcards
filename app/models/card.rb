@@ -3,7 +3,7 @@ class Card < ActiveRecord::Base
 
   validates :original_text, :translated_text, :review_date, presence: true
   validates :pack, presence: true
-  validates :interval, numericality: { only_integer: true }
+  validates :interval, :attempts, numericality: { only_integer: true }
   validates :efactor, numericality: { greater_than_or_equal_to: 1.3,
                                       less_than_or_equal_to: 2.5 }
   validate :translated_text_not_equal_original
@@ -15,9 +15,18 @@ class Card < ActiveRecord::Base
   mount_uploader :image, ImageUploader
 
   def check_translation(answer, answer_time)
-    result = DamerauLevenshtein.distance(original_text.mb_chars.downcase.to_s, answer.mb_chars.downcase.to_s)
-    SuperMemo.new(self, result <= 1, answer_time).call
-    { success: result <= 1, typos_count: result }
+    result = DamerauLevenshtein.distance(
+      original_text.mb_chars.downcase.to_s,
+      answer.mb_chars.downcase.to_s
+    )
+    result_status = result <= 1
+    card_params = SuperMemo.new(result_status, answer_time, self).call
+    self.efactor = card_params[:efactor]
+    self.attempts = card_params[:attempts]
+    self.interval = card_params[:interval]
+    self.review_date = card_params[:review_date]
+    save
+    { success: result_status, typos_count: result }
   end
 
   private
