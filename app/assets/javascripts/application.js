@@ -11,8 +11,16 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery_ujs
 //= require turbolinks
+//= require jquery_ujs
 //= require_tree .
 //= require bootstrap
 //= require bootstrap-sprockets
+
+$(document).on("page:load", function() {
+  if ($("#answer_time").length) {
+    setInterval(function() {
+      $("#answer_time").val(parseInt($("#answer_time").val(), 10) + 1);
+    }, 1000);
+  }
+});

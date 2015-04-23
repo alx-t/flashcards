@@ -3,10 +3,10 @@ class Card < ActiveRecord::Base
 
   validates :original_text, :translated_text, :review_date, presence: true
   validates :pack, presence: true
+  validates :interval, :attempts, numericality: { only_integer: true }
+  validates :efactor, numericality: { greater_than_or_equal_to: 1.3,
+                                      less_than_or_equal_to: 2.5 }
   validate :translated_text_not_equal_original
-  validates :attempts, numericality: { only_integer: true },
-            inclusion: { in: 0..3 }
-  validates :repetition_number, numericality: { only_integer: true }
 
   before_validation :set_review_date, on: :create
 
@@ -14,10 +14,15 @@ class Card < ActiveRecord::Base
   scope :random, -> { order("RANDOM()") }
   mount_uploader :image, ImageUploader
 
-  def check_translation(answer)
-    result = DamerauLevenshtein.distance(original_text.mb_chars.downcase.to_s, answer.mb_chars.downcase.to_s)
-    CheckAnswer.new(self, result <= 1).call
-    { success: result <= 1, typos_count: result }
+  def check_translation(answer, answer_time)
+    result = DamerauLevenshtein.distance(
+      original_text.mb_chars.downcase.to_s,
+      answer.mb_chars.downcase.to_s
+    )
+    result_status = result <= 1
+    card_params = SuperMemo.new(result_status, answer_time, self).call
+    update_attributes(card_params)
+    { success: result_status, typos_count: result }
   end
 
   private

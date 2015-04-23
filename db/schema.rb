@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150417155828) do
+ActiveRecord::Schema.define(version: 20150420153256) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,8 +33,9 @@ ActiveRecord::Schema.define(version: 20150417155828) do
     t.integer  "user_id"
     t.string   "image"
     t.integer  "pack_id"
-    t.integer  "attempts",          default: 0
-    t.integer  "repetition_number", default: 0
+    t.integer  "interval",        default: 0
+    t.decimal  "efactor",         default: 2.5
+    t.integer  "attempts",        default: 0
   end
 
   add_index "cards", ["pack_id"], name: "index_cards_on_pack_id", using: :btree

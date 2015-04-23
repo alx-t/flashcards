@@ -24,6 +24,7 @@ gem 'fog', '1.29.0'
 gem 'damerau-levenshtein'
 gem 'whenever', require: false
 gem 'http_accept_language'
+gem 'stronger_parameters'
 
 group :development, :test do
   gem 'byebug'

@@ -7,6 +7,21 @@ describe "Card" do
   subject { card }
   it { should be_valid }
 
+  context "creating new card" do
+
+    it "efactor should be 2.5" do
+      expect(card.efactor).to eq(2.5)
+    end
+
+    it "attempts should be 0" do
+      expect(card.attempts).to eq(0)
+    end
+
+    it "interval should be 0" do
+      expect(card.interval).to eq(0)
+    end
+  end
+
   context "validating" do
     context "when original_text is not present" do
       before { card.original_text = "" }
@@ -40,116 +55,18 @@ describe "Card" do
   context "check answer" do
 
     it "uppercase text right answer" do
-      expect(card.check_translation("TeSt")[:typos_count]).to eq(0)
+      expect(card.check_translation("TeSt", 0)[:typos_count]).to eq(0)
     end
 
     context "russian text" do
       before(:each) { card.original_text = "тест" }
 
       it "uppercase text right answer" do
-        expect(card.check_translation("ТесТ")[:typos_count]).to eq(0)
+        expect(card.check_translation("ТесТ", 0)[:typos_count]).to eq(0)
       end
 
       it "wrong answer" do
-        expect(card.check_translation("Дом")[:typos_count]).to be > 1
-      end
-    end
-
-    context "after right answers" do
-      before(:each) do
-        card.review_date = Time.now - 3.days
-        card.check_translation("test")
-      end
-
-      it "attempts" do
-        expect(card.attempts).to eq(0)
-      end
-
-      it "repetition number" do
-        expect(card.repetition_number).to eq(1)
-      end
-
-      it "review date" do
-        expect(card.review_date).to be >= Time.now
-      end
-    end
-
-    context "after wrong answers" do
-      before(:each) do
-        card.review_date = Time.now - 3.days
-        card.check_translation("book")
-      end
-
-      it "attempts" do
-        expect(card.attempts).to eq(1)
-      end
-
-      it "repetition number" do
-        expect(card.repetition_number).to eq(0)
-      end
-
-      it "review date" do
-        expect(card.review_date).to be <= Time.now
-      end
-    end
-
-    context "wrong answer after 3 attempts" do
-      before(:each) do
-        card.review_date = Time.now - 3.days
-        card.attempts = 3
-        card.check_translation("book")
-      end
-
-      it "attempts" do
-        expect(card.attempts).to eq(0)
-      end
-
-      it "review date added 12 hours" do
-        expect(card.review_date >= Time.now + 12.hours - 1.minute).to be true
-      end
-
-      it "repetition number" do
-        expect(card.repetition_number).to eq(1)
-      end
-    end
-
-    context "right answer after 3 repetition" do
-      before(:each) do
-        card.review_date = Time.now - 3.days
-        card.repetition_number = 3
-        card.check_translation("test")
-      end
-
-      it "attempts" do
-        expect(card.attempts).to eq(0)
-      end
-
-      it "review date added 2 weeks" do
-        expect(card.review_date >= Time.now + 2.weeks - 1.minute).to be true
-      end
-
-      it "repetition number" do
-        expect(card.repetition_number).to eq(4)
-      end
-    end
-
-    context "right answer after 7 repetition" do
-      before(:each) do
-        card.review_date = Time.now - 3.days
-        card.repetition_number = 7
-        card.check_translation("test")
-      end
-
-      it "attempts" do
-        expect(card.attempts).to eq(0)
-      end
-
-      it "review date added 2 weeks" do
-        expect(card.review_date >= Time.now + 1.month - 1.minute).to be true
-      end
-
-      it "repetition number" do
-        expect(card.repetition_number).to eq(8)
+        expect(card.check_translation("Дом", 0)[:typos_count]).to be > 1
       end
     end
   end
