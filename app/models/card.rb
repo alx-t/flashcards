@@ -21,11 +21,7 @@ class Card < ActiveRecord::Base
     )
     result_status = result <= 1
     card_params = SuperMemo.new(result_status, answer_time, self).call
-    self.efactor = card_params[:efactor]
-    self.attempts = card_params[:attempts]
-    self.interval = card_params[:interval]
-    self.review_date = card_params[:review_date]
-    save
+    update_attributes(card_params)
     { success: result_status, typos_count: result }
   end
 

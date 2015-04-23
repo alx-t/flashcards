@@ -24,7 +24,7 @@ class SuperMemo
       @interval = get_interval
       @review_date = Time.now + @interval.days
     end
-    return {
+    {
       efactor: @efactor,
       attempts: @attempts,
       interval: @interval,
