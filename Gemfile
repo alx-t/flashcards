@@ -26,6 +26,9 @@ gem 'whenever', require: false
 gem 'http_accept_language'
 gem 'stronger_parameters'
 
+gem 'rollbar', '~> 1.5.0'
+gem 'newrelic_rpm'
+
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
